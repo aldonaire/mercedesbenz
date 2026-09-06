@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import helmsLogo from '../assets/Helms Bros.png';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,7 @@ function Navbar() {
 
   const links = [
     { label: 'Home', href: '#home' },
-    { label: 'Introduction', href: '#introduction' },
+    // { label: 'Introduction', href: '#introduction' },
     { label: 'Design', href: '#design' },
     { label: 'Performance', href: '#performance' },
     { label: 'Technology', href: '#technology' },
@@ -22,7 +23,10 @@ function Navbar() {
 
   return (
     <nav className={`top-navbar ${scrolled ? 'is-scrolled' : ''}`} aria-label="Main navigation">
-      <a href="#home" className="brand">E 450</a>
+      <a href="#home" className="brand" aria-label="Helms Bros home">
+        <img src={helmsLogo} alt="Helms Bros logo" className="brand-logo" />
+        <span className="brand-text">Helms Bros, Inc</span>
+      </a>
 
       <button
         type="button"
@@ -43,9 +47,9 @@ function Navbar() {
             {link.label}
           </a>
         ))}
-        <a href="#gallery" className="nav-cta" onClick={() => setIsOpen(false)}>
+        {/* <a href="#gallery" className="nav-cta" onClick={() => setIsOpen(false)}>
   View Gallery
-</a>
+</a> */}
       </div>
     </nav>
   );

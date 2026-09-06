@@ -49,6 +49,11 @@ ol {
   --color-steel: #3a3f44;
   --color-glass-blue: #b8cbd4;
 
+  --color-muted-on-dark: #a8adb0;
+  --color-muted-on-light: #5d6265;
+  --color-border-on-dark: rgba(245, 243, 239, 0.2);
+  --color-border-accent: rgba(140, 122, 99, 0.35);
+
   --color-bg: var(--color-graphite);
   --color-bg-alt: var(--color-ivory);
   --color-text: var(--color-ivory);
@@ -85,6 +90,26 @@ ol {
   --duration-fast: 0.2s;
   --duration-base: 0.35s;
 }
+/* ==========================================================================
+   Sudden Changes
+   ========================================================================== */
+
+.hero-subline,
+.design-carousel-description,
+.technology-carousel-description,
+.performance-stat-label,
+.footer-links a,
+.footer-contact,
+.footer-contact a {
+  color: var(--color-muted-on-dark);
+}
+
+.introduction-paragraph,
+.interior-item-detail,
+.cta-subtext {
+  color: var(--color-muted-on-light);
+}
+
 
 /* ==========================================================================
    Base
@@ -177,11 +202,33 @@ section {
 }
 
 .brand {
-  font-family: var(--font-display);
-  font-size: var(--fs-h3);
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.7rem;
+  justify-content: center;
+  min-height: 42px;
+  margin-left: 0.25rem;
   color: var(--color-text);
+}
+
+.brand-logo {
+  display: block;
+  height: 60px;
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+  filter: none;
+}
+
+.brand-text {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  line-height: 1.2;
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
 .nav-links {
@@ -308,77 +355,132 @@ section {
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   padding: 0;
+  background: var(--color-graphite);
 }
 
 .hero-media {
-  height: 60vh;
+  position: relative;
+  width: 100%;
+  height: 55svh;
   overflow: hidden;
+  background: #111;
+}
+
+.hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 65%,
+    rgba(15, 15, 15, 0.32)
+  );
 }
 
 .hero-media img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 75% center;
 }
 
 .hero-content {
-  padding: var(--space-5) var(--content-padding-inline);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: var(--space-4) var(--content-padding-inline) var(--space-6);
+
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-2);
+
+  background: var(--color-graphite);
 }
 
 .hero-eyebrow {
+  margin: 0;
   font-family: var(--font-body);
   font-size: var(--fs-small);
+  font-weight: 500;
   color: var(--color-accent);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .hero-headline {
+  max-width: 14ch;
+  margin: 0;
   font-family: var(--font-display);
+  font-size: clamp(2rem, 9vw, 5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
 }
 
+
 .hero-subline {
+  margin: var(--space-1) 0 0;
   color: var(--color-text-muted);
+  font-size: var(--fs-body);
 }
 
 .hero-cta {
   align-self: flex-start;
-  margin-top: var(--space-2);
+  margin-top: var(--space-3);
   border: 1px solid var(--color-accent);
   border-radius: 999px;
   padding: var(--space-2) var(--space-4);
-  font-size: var(--fs-small);
+
   color: var(--color-accent);
-  transition: background var(--duration-fast) var(--ease-standard),
-    color var(--duration-fast) var(--ease-standard);
+  font-size: var(--fs-small);
+  text-decoration: none;
+
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    color var(--duration-fast) var(--ease-standard),
+    transform var(--duration-fast) var(--ease-standard);
 }
 
 .hero-cta:hover {
   background: var(--color-accent);
   color: var(--color-graphite);
+  transform: translateY(-2px);
 }
 
 @media (min-width: 1024px) {
   .hero {
-    flex-direction: row;
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(22rem, 1fr);
   }
 
   .hero-media {
-    height: 100vh;
-    width: 60%;
+    width: auto;
+    height: 100svh;
   }
 
   .hero-content {
-    width: 40%;
+    width: auto;
+    max-width: 42rem;
     justify-content: center;
+    padding-inline: clamp(2rem, 5vw, 6rem);
+  }
+
+  .hero-headline {
+    max-width: 12ch;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
   }
 }
+
 
 /* ==========================================================================
    Introduction
@@ -987,6 +1089,7 @@ section {
   flex-direction: column;
   gap: var(--space-4);
   padding-block: var(--space-5);
+  padding-inline: var(--content-padding-inline);
   border-top: 1px solid rgba(140, 122, 99, 0.2);
 }
 
