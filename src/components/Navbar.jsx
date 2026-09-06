@@ -30,7 +30,7 @@ function Navbar() {
 
       <button
         type="button"
-        className="menu-toggle"
+        className={`menu-toggle ${isOpen ? 'open' : ''}`}
         aria-expanded={isOpen}
         aria-controls="nav-menu"
         aria-label="Toggle navigation menu"
@@ -47,9 +47,6 @@ function Navbar() {
             {link.label}
           </a>
         ))}
-        {/* <a href="#gallery" className="nav-cta" onClick={() => setIsOpen(false)}>
-  View Gallery
-</a> */}
       </div>
     </nav>
   );

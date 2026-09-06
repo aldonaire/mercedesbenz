@@ -1,120 +1,149 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import exteriorFront from "../assets/exterior/e450-front.webp";
 import exteriorSide from "../assets/exterior/e450-side.jpg";
 import exterior01 from "../assets/exterior/e450-exterior-01.webp";
 import exterior02 from "../assets/exterior/e450-exterior-02.webp";
 import exterior03 from "../assets/exterior/e450-exterior-03.webp";
 
-function Design({ id }) {
-  const trackRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
+function useRevealOnScroll(count) {
+  const refs = useRef([]);
+  const [visible, setVisible] = useState(() => new Array(count).fill(false));
 
-  const details = [
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setVisible(new Array(count).fill(true));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.revealIndex);
+            setVisible((prev) => {
+              if (prev[index]) return prev;
+              const next = [...prev];
+              next[index] = true;
+              return next;
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    refs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [count]);
+
+  return { refs, visible };
+}
+
+function Design({ id }) {
+  const features = [
     {
-      image: exteriorSide,
-      alt: "2027 Mercedes-Benz E 450 side profile",
-      title: "One continuous line",
-      description: "The silhouette is drawn without a single unnecessary break.",
-    },
-    {
-      image: exterior01,
-      alt: "2027 Mercedes-Benz E 450 exterior detail",
-      title: "LED signature",
-      description: "Light as a deliberate design element, not an afterthought.",
-    },
-    {
+      number: "01",
+      title: "Chrome-Framed Grille",
+      description:
+        "A black grille surrounded by chrome creates a distinctive front-end signature, balancing bold contrast with refined detailing.",
       image: exterior02,
-      alt: "2027 Mercedes-Benz E 450 exterior detail",
-      title: "Character line",
-      description: "A crease that catches light differently at every angle.",
+      alt: "2027 Mercedes-Benz E 450 front three-quarter view showing the chrome-framed grille",
     },
     {
+      number: "02",
+      title: "Chrome Bodyside Accents",
+      description:
+        "Chrome detailing along the bodyside and rocker panels adds subtle definition to the E 450's clean and sophisticated profile.",
+      image: exteriorSide,
+      alt: "2027 Mercedes-Benz E 450 side profile showing chrome bodyside accents",
+    },
+    {
+      number: "03",
+      title: "Contrasting Black Trim",
+      description:
+        "Black window and windshield trim creates a crisp contrast against the bodywork while emphasizing the vehicle's silhouette.",
+      image: exterior01,
+      alt: "2027 Mercedes-Benz E 450 silhouette at sunset showing black window trim",
+    },
+    {
+      number: "04",
+      title: "Intelligent Side Mirrors",
+      description:
+        "Heated, power-folding mirrors feature driver-side auto-dimming and integrated turn signals for added visibility and everyday convenience.",
+      image: exteriorSide,
+      alt: "2027 Mercedes-Benz E 450 side mirror detail",
+    },
+    {
+      number: "05",
+      title: "LED Lighting",
+      description:
+        "LED lighting creates a crisp, modern exterior signature while providing clear illumination and a distinctive presence on the road.",
       image: exterior03,
-      alt: "2027 Mercedes-Benz E 450 exterior detail",
-      title: "Wheel design",
-      description: "Precision-cut, purpose-built, and unmistakably E-Class.",
+      alt: "2027 Mercedes-Benz E 450 emerging from a tunnel showing LED lighting signature",
+    },
+    {
+      number: "06",
+      title: "Approach Lighting",
+      description:
+        "Perimeter and approach lighting illuminates the vehicle surroundings as you approach, adding convenience and refinement after dark.",
+      image: exterior01,
+      alt: "2027 Mercedes-Benz E 450 parked at dusk with approach lighting",
     },
   ];
 
-  const scrollToIndex = (index) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const card = track.children[index];
-    if (!card) return;
-    track.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
-    setActiveIndex(index);
-  };
-
-  const handlePrev = () => scrollToIndex(Math.max(activeIndex - 1, 0));
-  const handleNext = () => scrollToIndex(Math.min(activeIndex + 1, details.length - 1));
-
-  const handleScroll = () => {
-    const track = trackRef.current;
-    if (!track) return;
-    const scrollLeft = track.scrollLeft;
-    let closestIndex = 0;
-    let closestDistance = Infinity;
-    Array.from(track.children).forEach((card, index) => {
-      const distance = Math.abs(card.offsetLeft - scrollLeft);
-      if (distance < closestDistance) {
-        closestDistance = distance;
-        closestIndex = index;
-      }
-    });
-    setActiveIndex(closestIndex);
-  };
+  const { refs, visible } = useRevealOnScroll(features.length);
 
   return (
-    <section id={id} className="design">
-      <p className="design-eyebrow">01</p>
-      <h2 className="design-heading">Design</h2>
-
-      <div className="design-pillar">
-        <div className="design-pillar-media">
-          <img src={exteriorFront} alt="2027 Mercedes-Benz E 450 front fascia" />
-        </div>
-        <p className="design-pillar-text">
-          A face that leads with restraint — every surface considered, nothing added
-          without reason.
+    <section id={id} className="design-editorial">
+      <div className="design-editorial-intro">
+        <p className="design-editorial-eyebrow">01 — Design</p>
+        <h2 className="design-editorial-heading">
+          Exterior, considered from every angle.
+        </h2>
+        <p className="design-editorial-intro-text">
+          The E 450 balances refined proportions with carefully considered
+          details, creating an exterior that feels athletic, sophisticated,
+          and unmistakably composed.
         </p>
       </div>
 
-      <div
-        className="design-carousel-track"
-        ref={trackRef}
-        onScroll={handleScroll}
-      >
-        {details.map((detail) => (
-          <div className="design-carousel-card" key={detail.title}>
-            <div className="design-carousel-media">
-              <img src={detail.image} alt={detail.alt} />
+      <div className="design-editorial-cinematic">
+        <img
+          src={exteriorFront}
+          alt="2027 Mercedes-Benz E 450 front fascia"
+        />
+      </div>
+
+      <div className="design-editorial-features">
+        {features.map((feature, index) => (
+          <div
+            key={feature.number}
+            ref={(el) => (refs.current[index] = el)}
+            data-reveal-index={index}
+            className={`design-feature ${
+              index % 2 === 1 ? "design-feature-reverse" : ""
+            } ${visible[index] ? "is-visible" : ""}`}
+          >
+            <div className="design-feature-media">
+              <img src={feature.image} alt={feature.alt} />
             </div>
-            <h3 className="design-carousel-title">{detail.title}</h3>
-            <p className="design-carousel-description">{detail.description}</p>
+            <div className="design-feature-text">
+              <p className="design-feature-number">{feature.number}</p>
+              <h3 className="design-feature-title">{feature.title}</h3>
+              <p className="design-feature-description">
+                {feature.description}
+              </p>
+            </div>
           </div>
         ))}
-      </div>
-
-      <div className="design-carousel-controls">
-        <button
-          type="button"
-          onClick={handlePrev}
-          disabled={activeIndex === 0}
-          aria-label="Previous design detail"
-        >
-          ‹
-        </button>
-        <p className="design-carousel-counter">
-          {String(activeIndex + 1).padStart(2, "0")} / {String(details.length).padStart(2, "0")}
-        </p>
-        <button
-          type="button"
-          onClick={handleNext}
-          disabled={activeIndex === details.length - 1}
-          aria-label="Next design detail"
-        >
-          ›
-        </button>
       </div>
     </section>
   );
