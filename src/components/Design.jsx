@@ -4,6 +4,7 @@ import exteriorSide from "../assets/exterior/e450-side.jpg";
 import exterior01 from "../assets/exterior/e450-exterior-01.webp";
 import exterior02 from "../assets/exterior/e450-exterior-02.webp";
 import exterior03 from "../assets/exterior/e450-exterior-03.webp";
+import design01 from "../assets/exterior/design-01.webp";
 
 function useRevealOnScroll(count) {
   const refs = useRef([]);
@@ -54,7 +55,7 @@ function Design({ id }) {
       title: "Chrome-Framed Grille",
       description:
         "A black grille surrounded by chrome creates a distinctive front-end signature, balancing bold contrast with refined detailing.",
-      image: exterior02,
+      image: exteriorFront,
       alt: "2027 Mercedes-Benz E 450 front three-quarter view showing the chrome-framed grille",
     },
     {
@@ -86,7 +87,7 @@ function Design({ id }) {
       title: "LED Lighting",
       description:
         "LED lighting creates a crisp, modern exterior signature while providing clear illumination and a distinctive presence on the road.",
-      image: exterior03,
+      image: design01,
       alt: "2027 Mercedes-Benz E 450 emerging from a tunnel showing LED lighting signature",
     },
     {
@@ -117,7 +118,7 @@ function Design({ id }) {
 
       <div className="design-editorial-cinematic">
         <img
-          src={exteriorFront}
+          src={exterior02}
           alt="2027 Mercedes-Benz E 450 front fascia"
         />
       </div>

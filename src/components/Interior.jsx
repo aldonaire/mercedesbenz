@@ -130,24 +130,19 @@ function Interior({ id }) {
 
   return (
     <section id={id} className="interior">
-      <div className="interior-intro">
-        <div className="interior-intro-inner reveal" ref={revealRef}>
-          <p className="interior-eyebrow">Interior</p>
-          <h2 className="interior-intro-heading">Comfort, considered.</h2>
-          <p className="interior-intro-copy">
+      <div
+        className="interior-hero reveal"
+        ref={revealRef}
+        style={{ backgroundImage: `linear-gradient(90deg, rgba(8,10,12,0.72) 0%, rgba(8,10,12,0.48) 38%, rgba(8,10,12,0.18) 100%), url(${interior01})` }}
+      >
+        <div className="interior-hero-copy">
+          <p className="tech-eyebrow">Interior</p>
+          <h2 className="tech-intro-heading">Comfort, considered.</h2>
+          <p className="tech-intro-copy">
             The cabin is built around driver and passenger comfort, control
             and everyday usability — every surface, seat and switch placed
             with daily use in mind.
           </p>
-        </div>
-      </div>
-
-      <div className="interior-hero">
-        <div className="interior-hero-media reveal" ref={revealRef}>
-          <img
-            src={interior01}
-            alt="Interior cabin of the 2027 Mercedes-Benz E 450"
-          />
         </div>
       </div>
 
