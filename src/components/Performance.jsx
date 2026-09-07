@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 function useRevealRef() {
   const observerRef = useRef(null);
@@ -23,13 +23,74 @@ function useRevealRef() {
   };
 }
 
+function CountUpValue({ end, decimals = 0, duration = 1400 }) {
+  const [display, setDisplay] = useState(decimals > 0 ? (0).toFixed(decimals) : '0');
+  const nodeRef = useRef(null);
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    const node = nodeRef.current;
+    if (!node) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated.current) {
+            hasAnimated.current = true;
+
+            if (prefersReducedMotion) {
+              setDisplay(decimals > 0 ? end.toFixed(decimals) : String(end));
+              observer.unobserve(node);
+              return;
+            }
+
+            const start = performance.now();
+
+            const tick = (now) => {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+              const current = end * eased;
+
+              setDisplay(
+                decimals > 0
+                  ? current.toFixed(decimals)
+                  : String(Math.round(current))
+              );
+
+              if (progress < 1) {
+                requestAnimationFrame(tick);
+              } else {
+                setDisplay(decimals > 0 ? end.toFixed(decimals) : String(end));
+              }
+            };
+
+            requestAnimationFrame(tick);
+            observer.unobserve(node);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [end, decimals, duration]);
+
+  return <span ref={nodeRef}>{display}</span>;
+}
+
 function Performance({ id }) {
   const revealRef = useRevealRef();
 
   const stats = [
-    { value: '375', unit: 'hp', label: 'Horsepower', numeric: true },
-    { value: '369', unit: 'lb-ft', label: 'Torque', numeric: true },
-    { value: '4.4', unit: 'sec', label: '0–60 mph', numeric: true },
+    { value: '375', unit: 'hp', label: 'Horsepower', numeric: true, end: 375, decimals: 0 },
+    { value: '369', unit: 'lb-ft', label: 'Torque', numeric: true, end: 369, decimals: 0 },
+    { value: '4.4', unit: 'sec', label: '0–60 mph', numeric: true, end: 4.4, decimals: 1 },
     { value: '4MATIC®', unit: '', label: 'All-Wheel Drive', numeric: false },
   ];
 
@@ -69,7 +130,11 @@ function Performance({ id }) {
                   (stat.numeric ? '' : ' performance-stat-value--mark')
                 }
               >
-                {stat.value}
+                {stat.numeric ? (
+                  <CountUpValue end={stat.end} decimals={stat.decimals} />
+                ) : (
+                  stat.value
+                )}
                 {stat.unit && (
                   <span className="performance-stat-unit">{stat.unit}</span>
                 )}

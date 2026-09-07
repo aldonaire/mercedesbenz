@@ -5,6 +5,8 @@ import exterior01 from "../assets/exterior/e450-exterior-01.webp";
 import exterior02 from "../assets/exterior/e450-exterior-02.webp";
 import exterior03 from "../assets/exterior/e450-exterior-03.webp";
 import design01 from "../assets/exterior/design-01.webp";
+import design02 from "../assets/exterior/design-02.webp";
+import gallery02 from "../assets/gallery/gallery-02.webp";
 
 function useRevealOnScroll(count) {
   const refs = useRef([]);
@@ -55,7 +57,7 @@ function Design({ id }) {
       title: "Chrome-Framed Grille",
       description:
         "A black grille surrounded by chrome creates a distinctive front-end signature, balancing bold contrast with refined detailing.",
-      image: exteriorFront,
+      image: design02,
       alt: "2027 Mercedes-Benz E 450 front three-quarter view showing the chrome-framed grille",
     },
     {
@@ -63,7 +65,7 @@ function Design({ id }) {
       title: "Chrome Bodyside Accents",
       description:
         "Chrome detailing along the bodyside and rocker panels adds subtle definition to the E 450's clean and sophisticated profile.",
-      image: exteriorSide,
+      image: gallery02,
       alt: "2027 Mercedes-Benz E 450 side profile showing chrome bodyside accents",
     },
     {
@@ -74,30 +76,30 @@ function Design({ id }) {
       image: exterior01,
       alt: "2027 Mercedes-Benz E 450 silhouette at sunset showing black window trim",
     },
+    // {
+    //   number: "04",
+    //   title: "Intelligent Side Mirrors",
+    //   description:
+    //     "Heated, power-folding mirrors feature driver-side auto-dimming and integrated turn signals for added visibility and everyday convenience.",
+    //   image: exteriorSide,
+    //   alt: "2027 Mercedes-Benz E 450 side mirror detail",
+    // },
     {
       number: "04",
-      title: "Intelligent Side Mirrors",
-      description:
-        "Heated, power-folding mirrors feature driver-side auto-dimming and integrated turn signals for added visibility and everyday convenience.",
-      image: exteriorSide,
-      alt: "2027 Mercedes-Benz E 450 side mirror detail",
-    },
-    {
-      number: "05",
       title: "LED Lighting",
       description:
         "LED lighting creates a crisp, modern exterior signature while providing clear illumination and a distinctive presence on the road.",
       image: design01,
       alt: "2027 Mercedes-Benz E 450 emerging from a tunnel showing LED lighting signature",
     },
-    {
-      number: "06",
-      title: "Approach Lighting",
-      description:
-        "Perimeter and approach lighting illuminates the vehicle surroundings as you approach, adding convenience and refinement after dark.",
-      image: exterior01,
-      alt: "2027 Mercedes-Benz E 450 parked at dusk with approach lighting",
-    },
+    // {
+    //   number: "06",
+    //   title: "Approach Lighting",
+    //   description:
+    //     "Perimeter and approach lighting illuminates the vehicle surroundings as you approach, adding convenience and refinement after dark.",
+    //   image: exterior01,
+    //   alt: "2027 Mercedes-Benz E 450 parked at dusk with approach lighting",
+    // },
   ];
 
   const { refs, visible } = useRevealOnScroll(features.length);
@@ -118,7 +120,7 @@ function Design({ id }) {
 
       <div className="design-editorial-cinematic">
         <img
-          src={exterior02}
+          src={exteriorFront}
           alt="2027 Mercedes-Benz E 450 front fascia"
         />
       </div>
