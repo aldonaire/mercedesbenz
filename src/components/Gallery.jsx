@@ -1,4 +1,3 @@
-import gallery01 from "../assets/gallery/gallery-01.jpg";
 import gallery02 from "../assets/gallery/gallery-02.webp";
 import gallery03 from "../assets/gallery/gallery-03.webp";
 import gallery04 from "../assets/gallery/gallery-04.webp";
@@ -8,7 +7,6 @@ function Gallery({ id }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const images = [
-    // { src: gallery01, alt: "2027 Mercedes-Benz E 450 gallery image 1" },
     { src: gallery02, alt: "2027 Mercedes-Benz E 450 gallery image 2" },
     { src: gallery03, alt: "2027 Mercedes-Benz E 450 gallery image 3" },
     { src: gallery04, alt: "2027 Mercedes-Benz E 450 gallery image 4" },

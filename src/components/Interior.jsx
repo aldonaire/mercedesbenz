@@ -1,5 +1,4 @@
 import { useRef } from "react";
-
 import interior01 from "../assets/interior/e450-interior-01.jpg";
 import interior02 from "../assets/interior/e450-interior-02.webp";
 import interior03 from "../assets/interior/e450-interior-03.webp";
@@ -36,85 +35,94 @@ function Interior({ id }) {
     {
       number: "01",
       eyebrow: "Comfort",
-      title: "Designed around you.",
+      title: "Designed around you, comfortably.",
       image: interior02,
       imageAlt: "Front seating and steering wheel in the 2027 Mercedes-Benz E 450",
-      items: [
-        "10-way driver seat",
-        "10-way passenger seat",
-        "Power tilt/telescoping steering column",
-        "Leather steering wheel with auto tilt-away",
-        "Power anti-whiplash tilt front head restraints",
-        "Power adjustable rear head restraints",
+      subgroups: [
+        {
+          label: "Seating",
+          items: [
+            "10-way driver seat",
+            "10-way passenger seat",
+            "Power tilt/telescoping steering column",
+            "Leather steering wheel with auto tilt-away",
+            "Power anti-whiplash tilt front head restraints",
+            "Power adjustable rear head restraints",
+          ],
+        },
+        {
+          label: "Climate & convenience",
+          items: [
+            "Voice-activated dual-zone automatic climate control",
+            "HVAC with underseat ducts",
+            "Residual heat recirculation",
+            "Console ducts",
+            "Air filtration",
+            "Cruise control with steering wheel controls",
+            "HomeLink garage door transmitter",
+            "Front and rear cupholders",
+            "Power fuel flap locking",
+            "Valet function",
+          ],
+        },
       ],
       variant: "with-image alt-bg",
     },
     {
       number: "02",
-      eyebrow: "Climate & convenience",
-      title: "Comfort that works quietly.",
-      items: [
-        "Voice-activated dual-zone automatic climate control",
-        "HVAC with underseat ducts",
-        "Residual heat recirculation",
-        "Console ducts",
-        "Air filtration",
-        "Cruise control with steering wheel controls",
-        "HomeLink garage door transmitter",
-        "Front and rear cupholders",
-        "Power fuel flap locking",
-        "Valet function",
-      ],
-      variant: "compact",
-    },
-    {
-      number: "03",
-      eyebrow: "Cabin details",
-      title: "The details of daily comfort.",
+      eyebrow: "Cabin & storage",
+      title: "Every detail has its place.",
       image: interior03,
       imageAlt: "Interior cabin detail of the 2027 Mercedes-Benz E 450",
-      items: [
-        "Illuminated locking glove box",
-        "Full cloth headliner",
-        "Leatherette door trim insert",
-        "Front and rear map lights",
-        "Full carpet floor covering with front and rear floor mats",
-        "Rear carpet floor trim",
-        "Driver and passenger visor vanity mirrors",
-        "Driver foot rest",
+      subgroups: [
+        {
+          label: "Cabin details",
+          items: [
+            "Illuminated locking glove box",
+            "Full cloth headliner",
+            "Leatherette door trim insert",
+            "Front and rear map lights",
+            "Full carpet floor covering with front and rear floor mats",
+            "Rear carpet floor trim",
+            "Driver and passenger visor vanity mirrors",
+            "Driver foot rest",
+          ],
+        },
+        {
+          label: "Storage",
+          items: [
+            "Full floor console with covered storage",
+            "Mini overhead console with storage",
+            "Instrument panel covered bin",
+            "Driver, passenger and rear door bins",
+            "Two seatback storage pockets",
+            "Cargo area concealed storage",
+            "Cargo space lights",
+          ],
+        },
       ],
       variant: "with-image reverse",
     },
     {
-      number: "04",
-      eyebrow: "Storage",
-      title: "Everything has its place.",
-      items: [
-        "Full floor console with covered storage",
-        "Mini overhead console with storage",
-        "Instrument panel covered bin",
-        "Driver, passenger and rear door bins",
-        "Two seatback storage pockets",
-        "Cargo area concealed storage",
-        "Cargo space lights",
-      ],
-      variant: "compact",
-    },
-    {
-      number: "05",
+      number: "03",
       eyebrow: "Information & security",
       title: "Connected to the essentials.",
-      items: [
-        "Driver information center",
-        "Redundant digital speedometer",
-        "Outside temperature gauge",
-        "Digital/analog appearance",
-        "Day-night auto-dimming rearview mirror",
-        "Tracker system",
-        "Security system with video/image recording",
-        "Immobilizer",
-        "Delayed accessory power",
-        "Two 12V DC power outlets",
+      subgroups: [
+        {
+          label: null,
+          items: [
+            "Driver information center",
+            "Redundant digital speedometer",
+            "Outside temperature gauge",
+            "Digital/analog appearance",
+            "Day-night auto-dimming rearview mirror",
+            "Tracker system",
+            "Security system with video/image recording",
+            "Immobilizer",
+            "Delayed accessory power",
+            "Two 12V DC power outlets",
+          ],
+        },
       ],
       variant: "compact quiet",
     },
@@ -135,10 +143,7 @@ function Interior({ id }) {
       </div>
 
       <div className="interior-hero">
-        <div
-          className="interior-hero-media reveal"
-          ref={revealRef}
-        >
+        <div className="interior-hero-media reveal" ref={revealRef}>
           <img
             src={interior01}
             alt="Interior cabin of the 2027 Mercedes-Benz E 450"
@@ -183,15 +188,29 @@ function Interior({ id }) {
                   </div>
                 )}
 
-                <ul
-                  className="interior-group-list reveal"
+                <div
+                  className="interior-group-lists reveal"
                   ref={revealRef}
                   style={{ "--stagger": hasImage ? 2 : 1 }}
                 >
-                  {group.items.map((item) => (
-                    <li key={item}>{item}</li>
+                  {group.subgroups.map((subgroup, index) => (
+                    <div
+                      className="interior-group-sublist"
+                      key={subgroup.label ?? index}
+                    >
+                      {subgroup.label && (
+                        <p className="interior-group-sublist-label">
+                          {subgroup.label}
+                        </p>
+                      )}
+                      <ul className="interior-group-list">
+                        {subgroup.items.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             </div>
           </div>

@@ -61,6 +61,7 @@ ol {
   --color-text-alt: var(--color-graphite);
   --color-text-muted: var(--color-steel);
   --color-accent: var(--color-bronze);
+  --color-accent-on-light: #6b5c49;
 
   --font-display: "Fraunces", "Iowan Old Style", serif;
   --font-body: "Manrope", "Segoe UI", sans-serif;
@@ -515,7 +516,7 @@ section {
 
 .introduction-eyebrow {
   margin: 0 0 1.5rem;
-  color: var(--color-accent);
+  color: var(--color-accent-on-light);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
@@ -701,12 +702,6 @@ section {
   padding-block: var(--space-7);
 }
 
-.tech-inner {
-  max-width: var(--content-max-width);
-  margin-inline: auto;
-}
-
-
 .tech-eyebrow {
   font-family: var(--font-body);
   font-size: var(--fs-small);
@@ -715,7 +710,7 @@ section {
   margin-bottom: var(--space-2);
 }
 
-/* 1 — Introduction */
+/* Intro */
 .tech-intro-inner {
   max-width: 52ch;
   padding-inline: clamp(1rem, 3vw, 3rem);
@@ -738,32 +733,40 @@ section {
   max-width: 42ch;
 }
 
-/* 2 — MBUX hero (light panel) */
-.tech-mbux {
+/* Shared panel pattern — used by Interface, Interaction, Connectivity */
+.tech-panel-inner {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding-inline: clamp(1rem, 3vw, 3rem);
+}
+
+.tech-panel--light {
   background: var(--color-bg-alt);
   color: var(--color-text-alt);
 }
 
-.tech-mbux-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+.tech-panel--dark {
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
-.tech-mbux-media {
+.tech-panel-media {
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius);
 }
 
-.tech-mbux-media img {
+.tech-panel-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.tech-mbux-title {
+.tech-panel-title {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 500;
@@ -772,377 +775,143 @@ section {
   max-width: 20ch;
 }
 
-.tech-mbux-copy {
+.tech-panel-copy {
   font-family: var(--font-body);
   font-size: var(--fs-body);
-  color: var(--color-muted-on-light);
   line-height: var(--lh-normal);
   max-width: 42ch;
   margin-bottom: var(--space-4);
 }
 
-.tech-mbux-points {
+.tech-panel--light .tech-panel-copy {
+  color: var(--color-muted-on-light);
+}
+
+.tech-panel--dark .tech-panel-copy {
+  color: var(--color-muted-on-dark);
+}
+
+.tech-panel-list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2) var(--space-4);
   font-family: var(--font-body);
   font-size: var(--fs-small);
-  color: var(--color-text-alt);
 }
 
-.tech-mbux-points li {
-  padding-block: var(--space-1);
-  border-top: 1px solid var(--color-border-accent);
+.tech-panel-list li {
   flex: 1 1 40%;
-  padding-top: var(--space-2);
-}
-
-/* 3 — Digital cockpit */
-.tech-cockpit-visual {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
-}
-
-.tech-cockpit-media {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-}
-
-.tech-cockpit-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tech-cockpit-stats {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-3);
-  padding: var(--space-5) var(--space-4) var(--space-4);
-  background: linear-gradient(
-    to top,
-    rgba(14, 16, 19, 0.92) 45%,
-    rgba(14, 16, 19, 0) 100%
-  );
-}
-
-.tech-cockpit-stat {
-  flex: 1 1 50%;
-  padding-block: var(--space-3);
-  border-top: 1px solid var(--color-border-on-dark);
-}
-
-.tech-cockpit-value {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--color-text);
-}
-
-.tech-cockpit-unit {
-  font-size: 0.5em;
-  color: var(--color-accent);
-  margin-left: var(--space-1);
-}
-
-.tech-cockpit-label {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--color-text);
-  margin-top: var(--space-2);
-}
-
-.tech-cockpit-description {
-  font-family: var(--font-body);
-  font-size: var(--fs-small);
-  color: var(--color-muted-on-dark);
-  margin-top: var(--space-1);
-  max-width: 36ch;
-}
-
-/* 4 — Intelligent interaction (light panel) */
-.tech-interaction {
-  background: var(--color-bg-alt);
-  color: var(--color-text-alt);
-}
-
-.tech-interaction-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
-.tech-interaction-media {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius);
-}
-
-.tech-interaction-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tech-interaction-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 500;
-  line-height: 1.15;
-  margin-bottom: var(--space-3);
-  max-width: 18ch;
-}
-
-.tech-interaction-copy {
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--color-muted-on-light);
-  max-width: 40ch;
-  margin-bottom: var(--space-4);
-}
-
-.tech-interaction-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-2);
-  font-family: var(--font-body);
-  font-size: var(--fs-small);
-  color: var(--color-text-alt);
-}
-
-.tech-interaction-list li {
   padding-block: var(--space-2);
   border-top: 1px solid var(--color-border-accent);
 }
 
-/* 5 — Navigation (distinct dark panel, full-bleed) */
-.tech-navigation {
-  background: var(--color-steel);
+.tech-panel--light .tech-panel-list {
+  color: var(--color-text-alt);
+}
+
+.tech-panel--dark .tech-panel-list {
   color: var(--color-text);
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  padding-inline: var(--content-padding-inline);
 }
 
-.tech-navigation-inner {
-  max-width: var(--content-max-width);
-  margin-inline: auto;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+.tech-panel--dark .tech-panel-list li {
+  border-top-color: var(--color-border-on-dark);
 }
 
-.tech-navigation-media {
-  width: 100%;
-  aspect-ratio: 21 / 9;
-  overflow: hidden;
-  border-radius: var(--radius);
-}
-
-.tech-navigation-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.tech-navigation-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: var(--space-4);
-}
-
-.tech-navigation-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
+.tech-panel-subhead {
+  flex-basis: 100%;
   font-family: var(--font-body);
+  font-weight: 600;
   font-size: var(--fs-body);
-  color: var(--color-muted-on-dark);
-}
-
-.tech-navigation-list li {
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--color-border-on-dark);
-  flex: 1 1 auto;
-}
-
-/* 6 — Connectivity */
-.tech-connectivity-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0;
-  font-family: var(--font-body);
-  font-size: var(--fs-body);
-  color: var(--color-text);
-  max-width: 60ch;
-}
-
-.tech-connectivity-grid li {
-  padding-block: var(--space-3);
-  border-top: 1px solid var(--color-border-accent);
-}
-
-.tech-connectivity-grid li:last-child {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border-top: none !important;
+  margin-top: var(--space-4);
+  padding-top: var(--space-4) !important;
+  padding-bottom: var(--space-2);
   border-bottom: 1px solid var(--color-border-accent);
 }
 
-/* 7 — Audio & entertainment */
-.tech-entertainment-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
+.tech-panel--light .tech-panel-subhead {
+  color: var(--color-accent-on-light);
 }
 
-.tech-entertainment-media {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: var(--radius);
-  filter: grayscale(0.15) contrast(1.05);
-}
-
-.tech-entertainment-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 70%;
-}
-
-.tech-entertainment-title {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.5vw, 3rem);
-  font-weight: 500;
-  margin-bottom: var(--space-3);
-  max-width: 16ch;
-}
-
-.tech-entertainment-copy {
-  font-family: var(--font-body);
-  font-size: var(--fs-h3);
-  color: var(--color-text);
-  max-width: 40ch;
-  margin-bottom: var(--space-4);
-}
-
-.tech-entertainment-list {
+/* Interface panel's extra stat row */
+.tech-interface-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2) var(--space-5);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border-accent);
+}
+
+.tech-interface-stat {
+  flex: 1 1 45%;
+}
+
+.tech-interface-stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+  font-weight: 500;
+  color: var(--color-text-alt);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+}
+
+.tech-interface-stat-unit {
+  font-size: 0.55em;
+  color: var(--color-accent-on-light);
+}
+
+.tech-interface-stat-label {
   font-family: var(--font-body);
   font-size: var(--fs-small);
-  color: var(--color-muted-on-dark);
+  color: var(--color-muted-on-light);
+  margin-top: var(--space-1);
 }
 
-/* Shared scroll reveal (single source of truth — used by Technology and Performance) */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.7s var(--ease-standard), transform 0.7s var(--ease-standard);
-  transition-delay: calc(var(--stagger, 0) * 100ms);
+.tech-panel-group + .tech-panel-group {
+  margin-top: var(--space-4);
 }
 
-.reveal.is-revealed {
-  opacity: 1;
-  transform: none;
+.tech-panel-group-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.tech-panel--light .tech-panel-group-label {
+  color: var(--color-accent-on-light);
 }
 
 @media (min-width: 1024px) {
-  .tech-mbux-inner {
+  .tech-panel-inner {
     flex-direction: row;
     align-items: center;
     gap: var(--space-6);
   }
 
-  .tech-mbux-media {
-    width: 58%;
+  .tech-panel-inner.tech-panel--reverse {
+    flex-direction: row-reverse;
   }
 
-  .tech-mbux-text {
-    width: 42%;
-  padding-inline: clamp(1rem, 3vw, 3rem);
-  }
-  .tech-cockpit-inner {
-    max-width: 90%;
+  .tech-panel-media {
+    width: 55%;
+    flex-shrink: 0;
   }
 
-  .tech-cockpit-media {
-    aspect-ratio: 21 / 9;
-  }
-
-  .tech-cockpit-stats {
-    flex-direction: row;
-    margin-top: calc(var(--space-6) * -1);
-    background: var(--color-bg);
-    margin-inline: var(--space-5);
-    padding-inline: var(--space-5);
-  }
-
-  .tech-cockpit-stat {
-    flex: 1 1 50%;
-    border-top: none;
-    border-left: 1px solid var(--color-border-accent);
-    padding-inline: var(--space-5);
-  }
-
-  .tech-cockpit-stat:first-child {
-    border-left: none;
-  }
-
-  .tech-interaction-inner {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .tech-interaction-media {
+  .tech-panel-text {
     width: 45%;
   }
 
-  .tech-interaction-text {
-    width: 55%;
-    padding-inline: clamp(1rem, 3vw, 3rem);
-  }
-
-  .tech-interaction-list {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .tech-navigation-inner {
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .tech-navigation-media {
-    width: 60%;
-  }
-
-  .tech-navigation-text {
-    width: 40%;
-  }
-
-  .tech-entertainment-inner {
-    flex-direction: row-reverse;
-    align-items: center;
-    gap: var(--space-6);
-  }
-
-  .tech-entertainment-media {
-    width: 50%;
-  }
-
-  .tech-entertainment-text {
-    width: 50%;
+  .tech-panel-list li {
+    flex: 1 1 40%;
   }
 }
 
@@ -1450,7 +1219,7 @@ section {
 .footer-dealer {
   font-family: var(--font-body) !important;
   font-size: var(--fs-small) !important;
-  color: var(--color-steel) !important;
+  color: var(--color-muted-on-dark) !important;
   margin-top: var(--space-1);
 }
 
@@ -1463,7 +1232,7 @@ section {
 .footer-links a {
   font-family: var(--font-body);
   font-size: var(--fs-small);
-  color: var(--color-steel);
+  color: var(--color-muted-on-dark);
   transition: color var(--duration-fast) var(--ease-standard);
 }
 
@@ -1478,11 +1247,11 @@ section {
   gap: var(--space-1);
   font-family: var(--font-body);
   font-size: var(--fs-small);
-  color: var(--color-steel);
+  color: var(--color-muted-on-dark);
 }
 
 .footer-contact a {
-  color: var(--color-steel);
+  color: var(--color-muted-on-dark);
   transition: color var(--duration-fast) var(--ease-standard);
 }
 
@@ -1494,7 +1263,7 @@ section {
 .footer-legal {
   font-family: var(--font-body);
   font-size: 0.75rem;
-  color: var(--color-steel);
+  color: var(--color-muted-on-dark);
   opacity: 0.7;
 }
 
@@ -1666,9 +1435,12 @@ section {
 .interior-group--alt-bg {
   background: var(--color-bg-alt);
   color: var(--color-text-alt);
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
+  margin-inline: calc(-1 * var(--content-padding-inline));
   padding-inline: var(--content-padding-inline);
+}
+
+.interior-group--alt-bg .interior-group-label {
+  color: var(--color-accent-on-light);
 }
 
 .interior-group--alt-bg .interior-group-title,
@@ -1696,6 +1468,26 @@ section {
 .reveal.is-revealed {
   opacity: 1;
   transform: none;
+}
+
+.interior-group-lists {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.interior-group-sublist-label {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.interior-group--alt-bg .interior-group-sublist-label {
+  color: var(--color-accent-on-light);
 }
 
 @media (min-width: 1024px) {
