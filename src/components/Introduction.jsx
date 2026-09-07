@@ -4,11 +4,16 @@ function Introduction({ id }) {
   return (
     <section id={id} className="introduction" aria-labelledby={headingId}>
       <div className="introduction-content">
-        <p className="introduction-eyebrow">A new expression of motion</p>
-
-        <h2 id={headingId} className="introduction-heading">
-          Every detail deliberate.
-        </h2>
+        
+        <div className="introduction-label">
+          <p className="introduction-eyebrow">A new expression of motion</p>
+        </div>
+        
+        <div className="introduction-heading-wrap">
+          <h2 id={headingId} className="introduction-heading">
+            Every detail deliberate.
+          </h2>
+        </div>
 
         <div className="introduction-copy">
           <p>

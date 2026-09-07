@@ -427,7 +427,7 @@ section {
 .hero-eyebrow {
   margin: 0;
   font-family: var(--font-body);
-  font-size: var(--fs-small);
+  font-size: var(--fs-body-lg);
   font-weight: 500;
   color: var(--color-accent);
   letter-spacing: 0.08em;
@@ -435,20 +435,28 @@ section {
 }
 
 .hero-headline {
-  max-width: 14ch;
+  max-width: 10ch;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2rem, 9vw, 5rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 12vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
   text-wrap: balance;
 }
 
+.hero-tagline {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-body);
+  font-size: clamp(1.5rem, 2.5vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
 
 .hero-subline {
   margin: var(--space-1) 0 0;
-  color: var(--color-text-muted);
-  font-size: var(--fs-body);
+  color: var(--color-text-muted-on-dark);
+  font-size: var(--fs-body-lg);
 }
 
 .hero-cta {
@@ -494,10 +502,15 @@ section {
   }
 
   .hero-headline {
-    max-width: 12ch;
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    line-height: 0.98;
-    letter-spacing: -0.035em;
+    max-width: 8ch;
+    font-size: clamp(1.5rem, 9vw, 6rem);
+    line-height: 0.94;
+  }
+
+  .hero-subline {
+    margin: var(--space-1) 0 0;
+    color: var(--color-text-muted-on-dark);
+    font-size: var(--fs-body);
   }
 }
 
@@ -512,7 +525,7 @@ section {
 }
 
 .introduction-content {
-  width: min(100%, 60rem);
+  width: min(100%, 70rem);
   margin-inline: auto;
 }
 
@@ -547,7 +560,7 @@ section {
 .introduction-copy p {
   margin: 0;
   color: var(--color-muted-on-light);
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
   line-height: 1.7;
 }
 
@@ -1023,7 +1036,7 @@ section {
 
 .performance-spec-label {
   font-family: var(--font-body);
-  font-size: var(--fs-small);
+  font-size: var(--fs-body-lg);
   color: var(--color-muted-on-dark);
   margin-bottom: var(--space-1);
 }

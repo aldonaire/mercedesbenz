@@ -87,7 +87,7 @@ function Technology({ id }) {
           <p className="tech-intro-copy">
             The E 450 brings intelligent interfaces, personalized controls,
             connected services, navigation and entertainment together around
-            the driver — designed to stay quietly out of the way until it's
+            the driver - designed to stay quietly out of the way until it's
             needed.
           </p>
         </div>
@@ -147,7 +147,7 @@ function Technology({ id }) {
             </h3>
             <p className="tech-panel-copy">
               The system is built to adapt to the driver, not the other way
-              around — recognizing who's behind the wheel and adjusting how
+              around - recognizing who's behind the wheel and adjusting how
               it responds, on the road and to where you're headed.
             </p>
 

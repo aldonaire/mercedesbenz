@@ -11,8 +11,9 @@ function Hero({ id }) {
       </div>
 
       <div className="hero-content">
-        <p className="hero-eyebrow">2027 E 450</p>
-        <h1 id="hero-title" className="hero-headline">Presence, Considered.</h1>
+        <p className="hero-eyebrow">MERCEDES-BENZ E-CLASS</p>
+        <h1 id="hero-title" className="hero-headline">E 450</h1>
+        <p className="hero-tagline">Presence, Considered.</p>
         <p className="hero-subline">4MATIC® all-wheel drive.</p>
         <a className="hero-cta" href="#design">
           Explore the model
