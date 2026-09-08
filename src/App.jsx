@@ -16,9 +16,9 @@ function App() {
       <Hero id="home" />
       <Introduction id="introduction" />
       <Design id="design" />
-      <Performance id="performance" />
-      <Technology id="technology" />
       <Interior id="interior" />
+      <Technology id="technology" />
+      <Performance id="performance" />
       <Gallery id="gallery" />
       <CTA id="cta" />
       <Footer id="footer" />

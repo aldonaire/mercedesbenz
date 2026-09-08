@@ -15,9 +15,9 @@ function Navbar() {
     { label: 'Home', href: '#home' },
     // { label: 'Introduction', href: '#introduction' },
     { label: 'Design', href: '#design' },
-    { label: 'Performance', href: '#performance' },
-    { label: 'Technology', href: '#technology' },
     { label: 'Interior', href: '#interior' },
+    { label: 'Technology', href: '#technology' },   
+    { label: 'Performance', href: '#performance' },
     { label: 'Gallery', href: '#gallery' },
   ];
 

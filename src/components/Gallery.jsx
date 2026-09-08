@@ -1,15 +1,19 @@
-import gallery02 from "../assets/gallery/gallery-02.webp";
+import gallery02 from "../assets/technology/e450-technology-01.webp";
 import gallery03 from "../assets/gallery/gallery-03.webp";
 import gallery04 from "../assets/gallery/gallery-04.webp";
+import gallery05 from "../assets/exterior/e450-exterior-03.webp";
+import gallery06 from "../assets/exterior/e450-side.jpg";
 import { useEffect, useState } from "react";
 
 function Gallery({ id }) {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const images = [
+    { src: gallery05, alt: "2027 Mercedes-Benz E 450 gallery image 4" },
     { src: gallery02, alt: "2027 Mercedes-Benz E 450 gallery image 1" },
     { src: gallery03, alt: "2027 Mercedes-Benz E 450 gallery image 2" },
     { src: gallery04, alt: "2027 Mercedes-Benz E 450 gallery image 3" },
+    { src: gallery06, alt: "2027 Mercedes-Benz E 450 gallery image 5" },
   ];
 
   const close = () => setActiveIndex(null);

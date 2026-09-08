@@ -675,6 +675,49 @@ section {
   max-width: 40ch;
 }
 
+.design-hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: calc(100svh - 5.5rem);
+  margin: 0;
+  margin-bottom: var(--space-7);
+  padding: clamp(1.5rem, 4vw, 4rem);
+  border-radius: 0;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  box-shadow: none;
+}
+
+.design-hero-copy {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 36rem);
+  text-align: left;
+  background: rgba(8, 10, 12, 0.72);
+  border: 1px solid rgba(174, 158, 130, 0.26);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: var(--radius);
+  backdrop-filter: blur(4px);
+}
+
+.design-hero .tech-eyebrow {
+  margin-bottom: var(--space-2);
+}
+
+.design-hero .tech-intro-heading {
+  margin-bottom: var(--space-3);
+}
+
+.design-hero .tech-intro-copy {
+  max-width: 32ch;
+  color: rgba(235, 232, 226, 0.85);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .design-feature-media,
   .design-feature-text {

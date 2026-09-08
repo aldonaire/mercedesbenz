@@ -51,6 +51,8 @@ function useRevealOnScroll(count) {
 }
 
 function Design({ id }) {
+  const revealRef = useRef(null);
+
   const features = [
     {
       number: "01",
@@ -76,14 +78,6 @@ function Design({ id }) {
       image: exterior01,
       alt: "2027 Mercedes-Benz E 450 silhouette at sunset showing black window trim",
     },
-    // {
-    //   number: "04",
-    //   title: "Intelligent Side Mirrors",
-    //   description:
-    //     "Heated, power-folding mirrors feature driver-side auto-dimming and integrated turn signals for added visibility and everyday convenience.",
-    //   image: exteriorSide,
-    //   alt: "2027 Mercedes-Benz E 450 side mirror detail",
-    // },
     {
       number: "04",
       title: "LED Lighting",
@@ -92,37 +86,29 @@ function Design({ id }) {
       image: design01,
       alt: "2027 Mercedes-Benz E 450 emerging from a tunnel showing LED lighting signature",
     },
-    // {
-    //   number: "06",
-    //   title: "Approach Lighting",
-    //   description:
-    //     "Perimeter and approach lighting illuminates the vehicle surroundings as you approach, adding convenience and refinement after dark.",
-    //   image: exterior01,
-    //   alt: "2027 Mercedes-Benz E 450 parked at dusk with approach lighting",
-    // },
   ];
 
   const { refs, visible } = useRevealOnScroll(features.length);
 
   return (
     <section id={id} className="design-editorial">
-      <div className="design-editorial-intro">
-        <p className="design-editorial-eyebrow">01 — Design</p>
-        <h2 className="design-editorial-heading">
-          Exterior, considered from every angle.
-        </h2>
-        <p className="design-editorial-intro-text">
-          The E 450 balances refined proportions with carefully considered
-          details, creating an exterior that feels athletic, sophisticated,
-          and unmistakably composed.
-        </p>
-      </div>
-
-      <div className="design-editorial-cinematic">
-        <img
-          src={exteriorFront}
-          alt="2027 Mercedes-Benz E 450 front fascia"
-        />
+      <div
+        className="design-hero"
+        style={{
+          backgroundImage: `linear-gradient(90deg, rgba(8,10,12,0.72) 0%, rgba(8,10,12,0.48) 38%, rgba(8,10,12,0.18) 100%), url(${exteriorFront})`,
+        }}
+      >
+        <div className="design-hero-copy">
+          <p className="tech-eyebrow">01 — Design</p>
+          <h2 className="tech-intro-heading">
+            Exterior, considered from every angle.
+          </h2>
+          <p className="tech-intro-copy">
+            The E 450 balances refined proportions with carefully considered
+            details, creating an exterior that feels athletic, sophisticated,
+            and unmistakably composed.
+          </p>
+        </div>
       </div>
 
       <div className="design-editorial-features">
