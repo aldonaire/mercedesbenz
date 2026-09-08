@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap (update domain if different)
+Sitemap: https://www.helmsbros.com/sitemap.xml
