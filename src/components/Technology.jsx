@@ -2,6 +2,7 @@ import { useRef } from "react";
 import dashboard from "../assets/technology/e450-dashboard.webp";
 import tech02 from "../assets/technology/e450-technology-02.webp";
 import tech03 from "../assets/technology/e450-technology-03.webp";
+import StaggeredText from "./StaggeredText";
 
 function useRevealRef() {
   const observerRef = useRef(null);
@@ -81,15 +82,15 @@ function Technology({ id }) {
       <div className="tech-intro">
         <div className="tech-intro-inner reveal" ref={revealRef}>
           <p className="tech-eyebrow">Technology</p>
-          <h2 className="tech-intro-heading">
-            Intelligence, intuitively integrated.
-          </h2>
-          <p className="tech-intro-copy">
-            The E 450 brings intelligent interfaces, personalized controls,
-            connected services, navigation and entertainment together around
-            the driver - designed to stay quietly out of the way until it's
-            needed.
-          </p>
+          <div className="tech-intro-columns">
+            <StaggeredText as="h2" className="tech-intro-heading" text="Intelligence, intuitively integrated." />
+            <p className="tech-intro-copy">
+              The E 450 brings intelligent interfaces, personalized controls,
+              connected services, navigation and entertainment together around
+              the driver — designed to stay quietly out of the way until it's
+              needed.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -104,10 +105,10 @@ function Technology({ id }) {
           </div>
           <div className="tech-panel-text reveal" ref={revealRef} style={{ "--stagger": 1 }}>
             <h3 className="tech-panel-title">
-              3rd Generation Mercedes-Benz User Experience
+              The MBUX experience
             </h3>
             <p className="tech-panel-copy">
-              MBUX brings digital displays, touch controls, natural-language
+              3rd Generation Mercedes-Benz User Experience brings digital displays, touch controls, natural-language
               voice interaction, personalization and intelligent assistance
               into one connected system built around how the driver actually
               moves through the cabin.
@@ -147,7 +148,7 @@ function Technology({ id }) {
             </h3>
             <p className="tech-panel-copy">
               The system is built to adapt to the driver, not the other way
-              around - recognizing who's behind the wheel and adjusting how
+              around — recognizing who's behind the wheel and adjusting how
               it responds, on the road and to where you're headed.
             </p>
 

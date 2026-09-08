@@ -7,6 +7,7 @@ import exterior03 from "../assets/exterior/e450-exterior-03.webp";
 import design01 from "../assets/exterior/design-01.webp";
 import design02 from "../assets/exterior/design-02.webp";
 import gallery02 from "../assets/gallery/gallery-02.webp";
+import StaggeredText from "./StaggeredText";
 
 function useRevealOnScroll(count) {
   const refs = useRef([]);
@@ -53,40 +54,46 @@ function useRevealOnScroll(count) {
 function Design({ id }) {
   const revealRef = useRef(null);
 
+
   const features = [
     {
       number: "01",
       title: "Chrome-Framed Grille",
       description:
-        "A black grille surrounded by chrome creates a distinctive front-end signature, balancing bold contrast with refined detailing.",
+        "A black grille framed in chrome creates a defined front-end signature with bold contrast.",
       image: design02,
       alt: "2027 Mercedes-Benz E 450 front three-quarter view showing the chrome-framed grille",
     },
+
     {
       number: "02",
       title: "Chrome Bodyside Accents",
       description:
-        "Chrome detailing along the bodyside and rocker panels adds subtle definition to the E 450's clean and sophisticated profile.",
+        "Chrome detailing along the bodyside and rocker panels adds subtle definition to the E 450's profile.",
       image: gallery02,
       alt: "2027 Mercedes-Benz E 450 side profile showing chrome bodyside accents",
     },
+
     {
       number: "03",
       title: "Contrasting Black Trim",
       description:
-        "Black window and windshield trim creates a crisp contrast against the bodywork while emphasizing the vehicle's silhouette.",
+        "Black window and windshield trim creates crisp contrast against the bodywork, emphasizing the vehicle's silhouette.",
       image: exterior01,
       alt: "2027 Mercedes-Benz E 450 silhouette at sunset showing black window trim",
     },
+
     {
       number: "04",
       title: "LED Lighting",
       description:
-        "LED lighting creates a crisp, modern exterior signature while providing clear illumination and a distinctive presence on the road.",
+        "LED lighting creates a crisp, modern signature while providing clear illumination on the road.",
       image: design01,
       alt: "2027 Mercedes-Benz E 450 emerging from a tunnel showing LED lighting signature",
     },
   ];
+
+
 
   const { refs, visible } = useRevealOnScroll(features.length);
 
@@ -99,10 +106,8 @@ function Design({ id }) {
         }}
       >
         <div className="design-hero-copy">
-          <p className="tech-eyebrow">01 — Design</p>
-          <h2 className="tech-intro-heading">
-            Exterior, considered from every angle.
-          </h2>
+          <p className="tech-eyebrow">Design</p>
+          <StaggeredText as="h2" className="tech-intro-heading" text="Exterior, considered from every angle." />
           <p className="tech-intro-copy">
             The E 450 balances refined proportions with carefully considered
             details, creating an exterior that feels athletic, sophisticated,

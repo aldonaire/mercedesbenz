@@ -1,4 +1,5 @@
 import heroImage from "../assets/hero/hero-e450.jpg";
+import StaggeredText from "./StaggeredText";
 
 function Hero({ id }) {
   return (
@@ -12,7 +13,7 @@ function Hero({ id }) {
 
       <div className="hero-content">
         <p className="hero-eyebrow">MERCEDES-BENZ E-CLASS</p>
-        <h1 id="hero-title" className="hero-headline">E 450</h1>
+        <StaggeredText as="h1" id="hero-title" className="hero-headline" text="E 450" />
         <p className="hero-tagline">Presence, Considered.</p>
         <p className="hero-subline">4MATIC® all-wheel drive.</p>
         <a className="hero-cta" href="#design">

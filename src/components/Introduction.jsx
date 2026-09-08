@@ -1,3 +1,5 @@
+import StaggeredText from "./StaggeredText";
+
 function Introduction({ id }) {
   const headingId = `${id}-heading`;
 
@@ -10,9 +12,8 @@ function Introduction({ id }) {
         </div>
         
         <div className="introduction-heading-wrap">
-          <h2 id={headingId} className="introduction-heading">
-            Every detail deliberate.
-          </h2>
+          <StaggeredText as="h2" id={headingId} className="introduction-heading" text="Every detail deliberate." />
+          
         </div>
 
         <div className="introduction-copy">

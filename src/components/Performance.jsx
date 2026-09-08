@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import StaggeredText from "./StaggeredText";
 
 function useRevealRef() {
   const observerRef = useRef(null);
@@ -74,7 +75,7 @@ function CountUpValue({ end, decimals = 0, duration = 1400 }) {
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.2 }
     );
 
     observer.observe(node);
@@ -98,7 +99,7 @@ function Performance({ id }) {
     { label: 'Engine', value: '3.0L Inline-6 Turbo' },
     { label: 'Drive system', value: 'Mild hybrid' },
     { label: 'Transmission', value: '9G-TRONIC 9-speed automatic' },
-    { label: 'EPA est. mpg', value: '22 city / 31 highway' },
+    { label: 'EPA-estimated fuel economy', value: '22 city / 31 highway mpg' },
     { label: 'Power', value: '375 hp @ 5,800–6,100 rpm' },
     { label: 'Torque', value: '369 lb-ft @ 1,800–5,000 rpm' },
   ];
@@ -108,7 +109,7 @@ function Performance({ id }) {
       <div className="section-inner performance-inner">
         <div className="performance-intro reveal" ref={revealRef}>
           <p className="performance-kicker">Performance</p>
-          <h2 className="performance-heading">Power, precisely delivered.</h2>
+          <StaggeredText as="h2" className="performance-heading" text="Power, precisely delivered." />
           <p className="performance-copy">
             The E 450 pairs a turbocharged inline-six with mild-hybrid
             assistance, routed through a 9G-TRONIC nine-speed automatic and

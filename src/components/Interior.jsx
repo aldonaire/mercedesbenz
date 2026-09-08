@@ -2,6 +2,7 @@ import { useRef } from "react";
 import interior01 from "../assets/interior/e450-interior-01.jpg";
 import interior02 from "../assets/interior/e450-interior-02.webp";
 import interior03 from "../assets/interior/e450-interior-03.webp";
+import StaggeredText from "./StaggeredText";
 
 function useRevealRef() {
   const observerRef = useRef(null);
@@ -137,7 +138,7 @@ function Interior({ id }) {
       >
         <div className="interior-hero-copy">
           <p className="tech-eyebrow">Interior</p>
-          <h2 className="tech-intro-heading">Comfort, considered.</h2>
+          <StaggeredText as="h2" className="tech-intro-heading" text="Comfort, considered." />
           <p className="tech-intro-copy">
             The cabin is built around driver and passenger comfort, control
             and everyday usability — every surface, seat and switch placed
