@@ -51,7 +51,7 @@ src/
 1. **Hero** — full-bleed model shot, model name as primary headline
 2. **Introduction** — short editorial copy
 3. **Design** — full-bleed intro + alternating image/text feature list (exterior details)
-4. **Performance** — verified spec sheet with count-up stat animation
+4. **Performance** — key vehicle spec sheet with count-up stat animation
 5. **Technology** — consolidated feature panels (interface, interaction, connectivity)
 6. **Interior** — full-bleed intro + grouped comfort/cabin/storage/security details
 7. **Gallery** — image carousel with lightbox
@@ -63,13 +63,8 @@ src/
 - **Palette:** Graphite `#0E1013` (dark), Ivory `#F5F3EF` (light), Bronze `#8C7A63` (accent) — plus `--color-muted-on-dark`, `--color-muted-on-light`, and `--color-accent-on-light` tokens to keep text contrast accessible on every background variant
 - **Layout:** mobile-first throughout, breakpoints primarily at `1024px` (with a couple of section-specific exceptions)
 - **Motion:** scroll-triggered reveals via `IntersectionObserver`, respecting `prefers-reduced-motion` throughout
+- **Accessibility:** semantic HTML, visible keyboard focus states, reduced-motion support, and descriptive image alt text.
 
-## Known open items
-
-- Confirm `<title>` / meta description are set in `index.html`
-- Convert remaining `.jpg` assets to `.webp`
-- Decide on whether to display starting MSRP (and source a verified figure if so)
-- Full cross-browser / cross-device visual QA pass
 
 ## Getting started
 
